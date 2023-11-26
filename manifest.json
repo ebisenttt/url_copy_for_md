@@ -1,0 +1,19 @@
+{
+  "manifest_version":3,
+  "name":"URL Copy for Markdown",
+  "description": "Copy URL for Markdown",
+  "version": "1.0",
+  "action":{
+    "default_popup":"popup.html",
+    "default_icon":"images/icon.png"
+  },
+  "permissions":[
+    "activeTab"
+  ],
+  "icons":{
+    "16":"images/icon.png",
+    "32":"images/icon.png",
+    "48":"images/icon.png",
+    "128":"images/icon.png"
+  }
+}
