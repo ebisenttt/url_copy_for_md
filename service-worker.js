@@ -11,9 +11,9 @@ chrome.commands.onCommand.addListener(() => {
       }
     )
     promise.then(() => {
-      console.log("Copied!")
+      console.log(`Copied the link: ${linkForMd}`)
     }).catch((error) => {
-      console.log('Failed to copy...', error)
+      console.log('Failed to copy:', error)
     })
   })
 })
