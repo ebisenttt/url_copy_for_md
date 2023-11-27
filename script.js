@@ -1,19 +1,11 @@
-function onClickCopyButton() {
-  chrome.tabs.query({active: true, lastFocusedWindow: true},tabs =>{
-    const currentTab = tabs[0]
-    const title = currentTab.title
-    console.log({currentTab})
-    const url = location.href
-    const linkForMd = `[${title}](${url})`
-    navigator.clipboard.writeText(linkForMd).then(() => {
-      alert(`Copied!: ${linkForMd}`)
-    }).catch(() => {
-      alert('Failed to copy...')
-    })
-  }) 
-}
+chrome.runtime.onMessage.addListener((message) => {
+  console.log('message received')
 
-document.addEventListener('DOMContentLoaded',()=>{
-  const copyUrlButton = document.querySelector('#copy-button')
-  copyUrlButton.addEventListener('click', onClickCopyButton)
+  if (message.command === 'copy-link-for-markdown'){
+    navigator.clipboard.writeText(message.text).then(() => {
+      console.log(`Copied!: ${message.text}`)
+    }).catch((error) => {
+      console.log('Failed to copy...', error)
+    })
+  }
 })

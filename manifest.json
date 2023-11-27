@@ -1,15 +1,35 @@
 {
-  "manifest_version":3,
   "name":"URL Copy for Markdown",
-  "description": "Copy URL for Markdown",
   "version": "1.0",
+  "manifest_version":3,
+  "description": "Copy URL for Markdown",
   "action":{
     "default_popup":"popup.html",
     "default_icon":"images/icon.png"
   },
+  "background":{
+    "service_worker":"service-worker.js"
+  },
+  "content_scripts":[
+    {
+      "matches": ["<all_urls>"],
+      "js":["script.js"],
+      "run_at":"document_start"
+    }
+  ],
+
   "permissions":[
     "activeTab"
   ],
+  "commands":{
+    "copy-link-for-markdown":{
+      "suggested_key":{
+        "default":"Ctrl+Shift+L",
+        "mac":"Command+Shift+L"
+      },
+      "description":"Copy URL of the Current Page for Markdown"
+    }
+  },
   "icons":{
     "16":"images/icon.png",
     "32":"images/icon.png",
